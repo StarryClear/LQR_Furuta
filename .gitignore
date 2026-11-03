@@ -1,0 +1,24 @@
+# ── Gowin EDA 生成物：可由 build.tcl 从 src/ 完整重建，不入库 ──────────
+impl/
+*.gprj.user
+*.tmp
+
+# ── 编辑器与系统垃圾 ─────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*~
+Thumbs.db
+desktop.ini
+
+# ── Python ───────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# 说明：firmware/ 下的两个 .fs 码流是**故意入库**的。
+# 它们是评审/复现时可直接烧写的定版产物，且体积（各 6.9 MB）在可接受范围。
+# 如果希望仓库更瘦，可改为只保留源码、把 .fs 放到 GitHub Releases：
+#   git rm -r --cached firmware && echo "firmware/*.fs" >> .gitignore

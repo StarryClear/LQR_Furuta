@@ -1,0 +1,8 @@
+开环泵能方向试验（物理模型 + 实测方向常数）
+判据：E = 0.5*(M11/(m g l))*theta_dot^2 + cos(theta) - 1，从下垂 theta=178° 静止起，
+      6 s 内按 duty = +/-900 * sign(theta_dot*cos theta) 施加，比较 E 的增量。
+  duty_sign=+1 :  E -1.999 -> -1.024   (theta_end=99 deg)  泵能
+  duty_sign=-1 :  E -1.999 -> -2.000   (theta_end=180 deg)  不泵能/耗能
+
+结论：duty = +K*sign(theta_dot*cos theta) 才是泵能方向，对应 swing_ctrl 的 invert_pd=1。
+（duty=+K 对应 u_model=-kappa*duty，因为实测 +duty 让编码器 counts 减小。）

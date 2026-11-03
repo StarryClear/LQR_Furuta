@@ -1,0 +1,17 @@
+# 统一换行，避免 Windows / macOS 混编时 build.tcl 被 CRLF 污染
+* text=auto eol=lf
+
+# 二进制：不做换行转换、不做文本 diff
+*.fs    binary
+*.bin   binary
+*.binx  binary
+*.db    binary
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+
+# Gowin 工程与约束保持原样
+*.gprj  text
+*.cst   text
+*.sdc   text
+*.tcl   text

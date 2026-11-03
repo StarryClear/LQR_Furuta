@@ -1,0 +1,142 @@
+*** GOWIN Tcl Command Line Console  *** 
+Open project ./LQR_2_1.gprj finished
+GowinSynthesis start
+Running parser ...
+Analyzing Verilog file '.\src\bal_top.v'
+Analyzing Verilog file '.\src\clk_reset.v'
+Analyzing Verilog file '.\src\sync_ff.v'
+Analyzing Verilog file '.\src\quad_decoder.v'
+Analyzing Verilog file '.\src\mcp3201_spi.v'
+Analyzing Verilog file '.\src\pwm_capture.v'
+Analyzing Verilog file '.\src\angle_calc.v'
+Analyzing Verilog file '.\src\motor_drv.v'
+Analyzing Verilog file '.\src\uart_tx.v'
+Analyzing Verilog file '.\src\uart_rx.v'
+Analyzing Verilog file '.\src\cmd_rx.v'
+Analyzing Verilog file '.\src\mode_ctrl.v'
+Analyzing Verilog file '.\src\speed_est.v'
+Analyzing Verilog file '.\src\vofa6.v'
+Analyzing Verilog file '.\src\lqr_core.v'
+Analyzing Verilog file '.\src\swing_ctrl.v'
+Analyzing Verilog file '.\src\knob_encoder.v'
+Analyzing Verilog file '.\src\oled_ui.v'
+Analyzing Verilog file '.\src\oled_fb.v'
+Analyzing Verilog file '.\src\oled_menu.v'
+Analyzing Verilog file '.\src\oled_speed.v'
+Analyzing Verilog file '.\src\oled_render12.v'
+Analyzing Verilog file '.\src\font_rom12.v'
+Analyzing Verilog file '.\src\font_rom.v'
+Analyzing Verilog file '.\src\sh1106_i2c.v'
+Analyzing Verilog file '.\src\udiv32.v'
+Analyzing Verilog file '.\src\menu_bg_rom.v'
+Analyzing Verilog file '.\src\menu_bg_noframe_rom.v'
+Analyzing Verilog file '.\src\param_scroll_rom.v'
+Analyzing Verilog file '.\src\menu_icon_small_rom.v'
+Analyzing Verilog file '.\src\menu_icon_large_rom.v'
+Analyzing Verilog file '.\src\traj_icon_small_rom.v'
+Analyzing Verilog file '.\src\traj_icon_large_rom.v'
+Analyzing Verilog file '.\src\speed_bg_rom.v'
+WARN  (EX3073) : Port 'rej' remains unconnected for this instance(".\src\bal_top.v":124)
+WARN  (EX3073) : Port 'rej_cnt' remains unconnected for this instance(".\src\bal_top.v":245)
+WARN  (EX3073) : Port 'traj_sel' remains unconnected for this instance(".\src\bal_top.v":629)
+WARN  (EX3073) : Port 'speed_sel' remains unconnected for this instance(".\src\bal_top.v":636)
+Compiling module 'bal_top'(".\src\bal_top.v":33)
+Compiling module 'clk_reset'(".\src\clk_reset.v":8)
+Compiling module 'quad_decoder'(".\src\quad_decoder.v":14)
+Compiling module 'uart_rx'(".\src\uart_rx.v":9)
+Compiling module 'cmd_rx'(".\src\cmd_rx.v":12)
+Compiling module 'mode_ctrl'(".\src\mode_ctrl.v":14)
+Compiling module 'mcp3201_spi'(".\src\mcp3201_spi.v":13)
+Compiling module 'sync_ff'(".\src\sync_ff.v":6)
+Compiling module 'pwm_capture'(".\src\pwm_capture.v":18)
+Compiling module 'angle_calc'(".\src\angle_calc.v":20)
+WARN  (EX3791) : Expression size 24 truncated to fit in target size 16(".\src\bal_top.v":301)
+Compiling module 'udiv32'(".\src\udiv32.v":13)
+WARN  (EX3791) : Expression size 32 truncated to fit in target size 16(".\src\bal_top.v":351)
+Compiling module 'swing_ctrl(L_MM=76,E_STOP_Q=16'sd32767,E_RESUME_Q=16'sb1110011001100110,W_CAP=16'sd150,ANG_CAP=16'sd250,ARM_REST_SPD=16'sd1500,PUMP_PROP=1,E_TGT_Q=16'sb1111110101110001,KP_PUMP=16'sd120,E_STOP_DIS=1)'(".\src\swing_ctrl.v":28)
+Compiling module 'lqr_core(TH_TGT_LIM=32'sd105)'(".\src\lqr_core.v":25)
+WARN  (EX3791) : Expression size 17 truncated to fit in target size 16(".\src\lqr_core.v":76)
+Compiling module 'motor_drv'(".\src\motor_drv.v":9)
+Compiling module 'speed_est'(".\src\speed_est.v":9)
+Compiling module 'vofa6'(".\src\vofa6.v":12)
+Compiling module 'uart_tx'(".\src\uart_tx.v":11)
+Compiling module 'knob_encoder'(".\src\knob_encoder.v":14)
+Compiling module 'oled_menu'(".\src\oled_menu.v":15)
+Extracting RAM for identifier 'frm'(".\src\oled_menu.v":68)
+Compiling module 'menu_bg_rom'(".\src\menu_bg_rom.v":6)
+Extracting RAM for identifier 'rom'(".\src\menu_bg_rom.v":12)
+Compiling module 'param_scroll_rom'(".\src\param_scroll_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\param_scroll_rom.v":8)
+Compiling module 'menu_bg_noframe_rom'(".\src\menu_bg_noframe_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\menu_bg_noframe_rom.v":8)
+Compiling module 'menu_icon_small_rom'(".\src\menu_icon_small_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\menu_icon_small_rom.v":8)
+Compiling module 'menu_icon_large_rom'(".\src\menu_icon_large_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\menu_icon_large_rom.v":8)
+Compiling module 'traj_icon_small_rom'(".\src\traj_icon_small_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\traj_icon_small_rom.v":8)
+Compiling module 'traj_icon_large_rom'(".\src\traj_icon_large_rom.v":3)
+Extracting RAM for identifier 'rom'(".\src\traj_icon_large_rom.v":8)
+Compiling module 'oled_fb'(".\src\oled_fb.v":12)
+Extracting RAM for identifier 'mem'(".\src\oled_fb.v":23)
+Compiling module 'sh1106_i2c(SCL_HZ=400000)'(".\src\sh1106_i2c.v":24)
+Compiling module 'oled_speed'(".\src\oled_speed.v":7)
+Compiling module 'speed_bg_rom'(".\src\speed_bg_rom.v":2)
+Extracting RAM for identifier 'rom'(".\src\speed_bg_rom.v":7)
+Compiling module 'oled_ui'(".\src\oled_ui.v":21)
+Extracting RAM for identifier 'text'(".\src\oled_ui.v":159)
+Compiling module 'oled_render12'(".\src\oled_render12.v":7)
+Compiling module 'font_rom12'(".\src\font_rom12.v":3)
+Extracting RAM for identifier 'rom'(".\src\font_rom12.v":8)
+Compiling module 'sh1106_i2c(X_OFF=8'b00000000)'(".\src\sh1106_i2c.v":24)
+NOTE  (EX0101) : Current top module is "bal_top"
+[5%] Running netlist conversion ...
+Running device independent optimization ...
+[10%] Optimizing Phase 0 completed
+[15%] Optimizing Phase 1 completed
+[25%] Optimizing Phase 2 completed
+Running inference ...
+[30%] Inferring Phase 0 completed
+[40%] Inferring Phase 1 completed
+[50%] Inferring Phase 2 completed
+[55%] Inferring Phase 3 completed
+Running technical mapping ...
+[60%] Tech-Mapping Phase 0 completed
+[65%] Tech-Mapping Phase 1 completed
+[75%] Tech-Mapping Phase 2 completed
+[80%] Tech-Mapping Phase 3 completed
+[90%] Tech-Mapping Phase 4 completed
+WARN  (NL0002) : The module "menu_bg_noframe_rom" instantiated to "u_noframe" is swept in optimizing(".\src\oled_menu.v":108)
+[95%] Generate netlist file ".\impl\gwsynthesis\LQR_2_1.vg" completed
+[100%] Generate report file ".\impl\gwsynthesis\LQR_2_1_syn.rpt.html" completed
+GowinSynthesis finish
+Reading netlist file: ".\impl\gwsynthesis\LQR_2_1.vg"
+Parsing netlist file ".\impl\gwsynthesis\LQR_2_1.vg" completed
+Processing netlist completed
+Reading constraint file: ".\src\LQR_2_1.cst"
+Physical Constraint parsed completed
+Running placement......
+[10%] Placement Phase 0 completed
+[20%] Placement Phase 1 completed
+[30%] Placement Phase 2 completed
+[50%] Placement Phase 3 completed
+Running routing......
+[60%] Routing Phase 0 completed
+[70%] Routing Phase 1 completed
+[80%] Routing Phase 2 completed
+[90%] Routing Phase 3 completed
+Running timing analysis......
+[95%] Timing analysis completed
+Placement and routing completed
+Bitstream generation in progress......
+Bitstream generation completed
+Running power analysis......
+[100%] Power analysis completed
+Generate file ".\impl\pnr\LQR_2_1.power.html" completed
+Generate file ".\impl\pnr\LQR_2_1.pin.html" completed
+Generate file ".\impl\pnr\LQR_2_1.rpt.html" completed
+Generate file ".\impl\pnr\LQR_2_1.rpt.txt" completed
+Generate file ".\impl\pnr\LQR_2_1.tr.html" completed
+Generate file ".\impl\pnr\LQR_2_1.tr" completed
+Mon Nov  2 21:47:19 2026
+

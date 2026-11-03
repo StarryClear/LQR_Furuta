@@ -1,0 +1,50 @@
+﻿<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-18C" pn="GW2A-LV18PG256C8/I7">gw2a18c-011</Device>
+    <FileList>
+        <File path="src/bal_top.v" type="file.verilog" enable="1"/>
+        <File path="src/clk_reset.v" type="file.verilog" enable="1"/>
+        <File path="src/sync_ff.v" type="file.verilog" enable="1"/>
+        <File path="src/quad_decoder.v" type="file.verilog" enable="1"/>
+        <File path="src/mcp3201_spi.v" type="file.verilog" enable="1"/>
+        <File path="src/pwm_capture.v" type="file.verilog" enable="1"/>
+        <File path="src/angle_calc.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_drv.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_tx.v" type="file.verilog" enable="1"/>
+        <File path="src/uart_rx.v" type="file.verilog" enable="1"/>
+        <File path="src/cmd_rx.v" type="file.verilog" enable="1"/>
+        <File path="src/mode_ctrl.v" type="file.verilog" enable="1"/>
+        <File path="src/speed_est.v" type="file.verilog" enable="1"/>
+        <File path="src/vofa6.v" type="file.verilog" enable="1"/>
+        <File path="src/lqr_core.v" type="file.verilog" enable="1"/>
+        <File path="src/swing_ctrl.v" type="file.verilog" enable="1"/>
+        <File path="src/knob_encoder.v" type="file.verilog" enable="1"/>
+        <File path="src/oled_ui.v" type="file.verilog" enable="1"/>
+        <File path="src/oled_fb.v" type="file.verilog" enable="1"/>
+        <File path="src/oled_menu.v" type="file.verilog" enable="1"/>
+        <File path="src/oled_speed.v" type="file.verilog" enable="1"/>
+        <File path="src/oled_render12.v" type="file.verilog" enable="1"/>
+        <File path="src/font_rom12.v" type="file.verilog" enable="1"/>
+        <File path="src/font_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/sh1106_i2c.v" type="file.verilog" enable="1"/>
+        <File path="src/udiv32.v" type="file.verilog" enable="1"/>
+        <File path="src/sin_lut.v" type="file.verilog" enable="1"/>
+        <File path="src/sin_gen.v" type="file.verilog" enable="1"/>
+        <File path="src/menu_bg_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/menu_bg_noframe_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/param_scroll_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/menu_icon_small_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/menu_icon_large_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/traj_icon_small_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/traj_icon_large_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/speed_bg_rom.v" type="file.verilog" enable="1"/>
+        <File path="src/LQR_end.cst" type="file.cst" enable="1"/>
+        <File path="src/LQR_end.sdc" type="file.sdc" enable="1"/>
+    </FileList>
+</Project>
+
+
+

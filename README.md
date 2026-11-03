@@ -10,7 +10,8 @@
 > 2026 全国大学生嵌入式芯片与系统设计竞赛 · FPGA 创新设计赛道 · 选题一
 > 「基于 FPGA 的实时姿态控制系统（旋转式倒立摆）」
 >
-> 定版 **v1.1**（2026-11-03），码流 CheckSum `0x2D55`
+> 定版 **v1.1**（2026-11-03，单段连续平衡 **660.1 s**），码流 CheckSum `0x2D55`
+> 技术报告全文（20 页 PDF）：[docs/技术报告.pdf](docs/技术报告.pdf)
 
 **English** — A complete rotary inverted pendulum on a Gowin GW2A-18 FPGA. PWM angle
 decoding, quadrature decoding, speed estimation, a 1 kHz fixed-point LQR law, an
@@ -18,7 +19,7 @@ energy-pumping swing-up state machine and 20 kHz PWM are all synthesizable Veril
 single 50 MHz clock domain — no soft core, no MCU. Raw measurement CSVs and the scripts
 that recompute every number in the docs are included.
 
-![连续平衡 514.8 s：摆杆倾角 θ 与 PWM 占空比](docs/figures/fig2_balance.png)
+![v1.0 基线：连续平衡 514.8 s，摆杆倾角 θ 与 PWM 占空比](docs/figures/fig2_balance.png)
 
 ---
 
@@ -75,36 +76,45 @@ flowchart LR
 
 ## 2. 关键指标
 
-v1.0 的每一项指标都能用 `python tools/recompute_all.py` 从 `docs/data/` 的原始 CSV 复算，
-口径见 [docs/03_数据与复算.md](docs/03_数据与复算.md)；v1.1 的对比与推导见
+全部数字都能从 `docs/data/` 的原始 CSV 复算：定版 campaign 用
+`python tools/recompute_v30.py all`，1.0 基线用 `python tools/recompute_all.py`，
+判据口径见 [docs/03_数据与复算.md](docs/03_数据与复算.md)；1.1 的改动与推导见
 [VERSION_1.1.md](VERSION_1.1.md)。
 
-### v1.1（当前定版，码流 `0x2D55`）
+### v1.1 定版（码流 `0x2D55`，2026-11-03 20:20~21:10 十段实测 S0~S10）
 
-| 项 | 值 |
-|---|---|
-| 连续平衡 | **111.0 s** 单段（截止到首次掉摆，统计去掉前 3 s 捕获瞬态） |
-| 平衡精度 | \|θ\| p50 **0.70°** / p95 **1.80°** / rms **≈0.9°** |
-| 主频 | **8.1 Hz**（结构模态，不是控制极限） |
-| duty 峰值 | 955 / 2500（1.0 为 1850） |
+| 项 | 实测值 | 数据 |
+|---|---|---|
+| 起摆成功率 | **10/10 = 100%**（另 1 轮起点过晚、数据不足剔除） | `docs/data/v30_S2.csv` |
+| 起摆耗时 | kick → 平衡 中位 **1.14 s**（1.11~1.16 s） | 同上 |
+| 连续平衡 | **660.1 s** 单段不倒（11 分 00 秒，0 帧饱和） | `docs/data/v30_S4.csv` |
+| 平衡精度 | \|θ\| p50 **0.70°** / p95 **1.60°** / rms **0.86°** / max 2.40° | 同上 |
+| 执行器余量 | duty 峰值 **1161**（限幅 2000），mean \|duty\| 421，饱和 **0 帧** | 同上 |
+| 横臂漂移 | 净 **−21 counts（−9.2°）** / 660 s ≈ **0.83 °/min** | 同上 |
+| 抗瞬时推扰 | 峰值 5.0~14.1° 共 **8 次，8 次全部恢复**，恢复 0.19~1.33 s | `docs/data/v30_S6.csv` |
+| 位置跟随阶跃 | 目标 +18°，实测 **+14.4°**，稳态误差 −3.6°，过冲 26° 后回落 | `docs/data/v30_S7b.csv` |
+| 正弦轨迹跟踪 | 0.245 Hz / 35° → ±26.6°（**76%**）；0.351 Hz / 50° → ±33.8°（**68%**） | `v30_S9.csv` `v30_S10.csv` |
+| SA100 静止噪声 | ±0.25°（1σ 0.06°，60 s 内只有 6 个码值） | `docs/data/v30_S0b2.csv` |
 
 改了什么：`KDT` 60 → 120，θ̇ 一阶低通 `>>>3`（8 ms）→ `>>>1`（2 ms），把 5 Hz 极限环
-的动能从 96% 压到约 3%。推导与陷波回退实验见 [VERSION_1.1.md](VERSION_1.1.md)。
+的动能从 96% 压到约 3%，抖动主频由 5.1 Hz 移到 8.0 Hz。推导与陷波回退实验见
+[VERSION_1.1.md](VERSION_1.1.md)。
 
-### v1.0 基线（码流 `0x6A6F`，全套指标）
+### v1.0 基线（码流 `0x6A6F`，历史数据）
 
 | 项 | 值 | 数据 |
 |---|---|---|
-| 起摆成功率 | **83%**（15/18 站住 ≥2 s；17/18 完成捕获） | `docs/data/swing10.csv` |
-| 起摆耗时 | kick → 平衡 中位 **1.14 s**（1.10–1.77 s） | 同上 |
-| 连续平衡 | **514.8 s** 单段不倒 | `docs/data/hold10min.csv` |
+| 起摆成功率 | 83%（15/18 站住 ≥2 s；17/18 完成捕获） | `docs/data/swing10.csv` |
+| 起摆耗时 | kick → 平衡 中位 1.14 s（1.10–1.77 s） | 同上 |
+| 连续平衡 | 514.8 s 单段不倒 | `docs/data/hold10min.csv` |
 | 平衡精度 | \|θ\| p50 1.70° / p95 3.50° / rms 2.03° / max 4.90° | 同上 |
-| 执行器余量 | duty 饱和 **0 帧**，mean \|duty\| 508，峰值 1850（限幅 2000） | 同上 |
-| 横臂漂移 | 净 33.6° / 8.6 min ≈ **3.9 °/min** | 同上 |
-| 抗瞬时推扰 | 检出 35 次，**33 次自行恢复（94%）**，可恢复峰值 **26.7°**，掉摆 2 次 | `docs/data/disturb3.csv` |
+| 执行器余量 | duty 饱和 0 帧，mean \|duty\| 508，峰值 1850（限幅 2000） | 同上 |
+| 横臂漂移 | 净 33.6° / 8.6 min ≈ 3.9 °/min | 同上 |
+| 抗瞬时推扰 | 检出 35 次，33 次自行恢复（94%），可恢复峰值 26.7°，掉摆 2 次 | `docs/data/disturb3.csv` |
 
-> ⚠️ **口径提醒**：1.1 只改了 KDT 与 θ̇ 低通，起摆与抗扰**未在 1.1 上重测**。
-> 引用 83% 起摆、33/35 抗扰时请标注"v1.0 数据"。
+> ⚠️ **口径提醒**：两套数据的判据不同——1.1 的抗扰按 `|θ| ≥ 4.5°` 起判、2 s 内合并，
+> 1.0 按 `|θ| ≥ 8°`、0.3 s 内合并。跨版本比较时请标注"v1.0 数据 / 1.1 数据"，
+> 不要拼成同一条曲线。上面那张图是 v1.0 的 514.8 s 段，定版 660 s 段的图见技术报告。
 
 ---
 
@@ -158,8 +168,9 @@ LQR_Furuta/
 │   ├── 03_数据与复算.md       CSV 字段、判据口径、复算命令
 │   ├── 04_已知问题.md        ★ 已知缺陷与未验证事项（写报告必读）
 │   ├── 05_编码约定.md         文件编码规范（避免乱码）
-│   ├── data/                 实测原始 CSV（5 个）
-│   └── figures/              报告用图（由 tools/plot_measured.py 生成）
+│   ├── data/                 实测原始 CSV（v30 定版 14 个 + 1.0 历史 5 个）
+│   ├── figures/              报告用图（由 tools/plot_measured.py 生成）
+│   └── 技术报告.pdf           ★ 20 页技术报告（引 v1.1 定版数据）
 ├── evidence/                 综合/时序/资源报告、改名重建复验记录
 ├── firmware/
 │   ├── LQR_end1.1_0x2D55.fs  ★ 当前定版码流
@@ -212,6 +223,7 @@ $env:GOWIN_HOME = 'C:\Gowin\Gowin_V1.9.12.04_x64'   # 改成你的安装路径
 
 ```powershell
 python tools/recompute_all.py     # 重算 docs/ 里出现的每一个实测数字
+python tools/recompute_v30.py all # 复算定版 campaign（docs/data/v30_S*.csv）
 python tools/plot_measured.py     # 重画 docs/figures/
 python tools/check_links.py       # 检查所有 Markdown 相对链接是否有效
 ```

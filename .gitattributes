@@ -9,6 +9,8 @@
 *.png   binary
 *.jpg   binary
 *.jpeg  binary
+*.pdf   binary
+*.csv   text
 
 # Gowin 工程与约束保持原样
 *.gprj  text
